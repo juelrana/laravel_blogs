@@ -1,5 +1,5 @@
 @extends('master');
-@section('main_content')
+@section('main_content');
 
 
 <div id="templatemo_slider">
@@ -70,4 +70,4 @@
     
     <div class="cleaner"></div>
 </div> <!-- END of templatemo_main -->
-@endsection
+@endsection;

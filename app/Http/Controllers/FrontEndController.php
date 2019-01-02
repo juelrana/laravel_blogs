@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class FrontEndController extends Controller
 {
@@ -28,7 +29,9 @@ class FrontEndController extends Controller
         ->with('main_content',$about);
     }
     public function blogs(){
-        $blogs=view('pages.blogs');
+        $all_blog = DB::table('blog')->select('*')->get();
+        $blogs=view('pages.blogs')
+        ->with('all_blog_info',$all_blog);
         return view('master')
         ->with('main_content',$blogs);
     }

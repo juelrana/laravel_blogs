@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Redirect;
 use Session;
+session_start();
 use Illuminate\Http\Request;
 use DB;
 
@@ -15,6 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
+
+        $this->adminAuthCheck();
         return view('admin.admin_login');
     }
     public function adminLogin(Request $request){
@@ -29,10 +32,24 @@ class AdminController extends Controller
           if($result){
                 Session::put('admin_name',$result->admin_name);
                 Session::put('admin_id',$result->admin_id);
-                return view('admin.admin_master',refresh);
+                $admin_id=Session::get('admin_id');
+                if($admin_id){
+                    return Redirect::to('/dashboard');
+                }else{
+                    return Redirect::to('/admin');
+                }
           }else{
-            Session::put('exception','Username or Password wrong!');      
-            return Redirect::to('/admin');
+                Session::put('exception','Username or Password wrong!');      
+                return Redirect::to('/admin');
+        }
+    }
+
+    public function adminAuthCheck(){
+        $admin_id=Session::GET('admin_id');
+        if($admin_id){
+            return Redirect::to('/dashboard')->send();
+        }else{
+            return; 
         }
     }
     /**

@@ -27,12 +27,14 @@
     <div id="sidebar">
     	<h3>Categories</h3>
         <ul class="templatemo_list">
-            <li><a href="#">Donec tempor dapibus</a></li>
-            <li><a href="#">Etiam tempus quam eu</a></li>
-        	<li><a href="#">Nullam ornare vulputate</a></li>
-            <li><a href="#">Pellentesque eget magna</a></li>
-            <li><a href="#">Vestibulum erat dolor</a></li>
+            <?php $all_category = DB::table('category')->select('*')
+            ->where('publication_status',1)
+            ->get();  ?>
+            @foreach($all_category as $category)
+            <li><a href="#"> {{ $category->category_name}} </a></li>
+            @endforeach
         </ul>
+        
         
         <div class="cleaner h30"></div>
 
@@ -40,11 +42,11 @@
         <div class="testimonial">
             <p>Nunc vitae purus non augue scelerisque ultricies vitae et velit quis nulla id orci malesua tempus erat.</p>
             <cite>Steven <a href="#"><span>- Web Designer</span></a></cite>
-		</div>
-    	<div class="testimonial">
+        </div>
+        <div class="testimonial">
             <p>Curabitur sed felis urna, quis eleifend magna. Nunc quam mollis sem nunc mauris iaculis sed.</p>
-    		<cite>Thomas <a href="#"><span>- Senior Webmaster</span></a></cite>
-		</div>
+            <cite>Thomas <a href="#"><span>- Senior Webmaster</span></a></cite>
+        </div>
     </div> <!-- end of sidebar -->
     
     <div class="cleaner"></div>

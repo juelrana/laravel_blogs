@@ -27,46 +27,53 @@
         <!-- END LOGO -->
     </div>
 
-    {!! Form::open(['url' => '/dashboard','method'=>'post']) !!}
+    {!! Form::open(['url' => '/admin_login','method'=>'post']) !!}
     
     <div class="login-wrap">
+        <h3 align="center" color='red'>
+            <?php
+
+            $exceptiop=Session::get('exception');
+            if(isSet($exceptiop)){
+                echo $exceptiop;
+                Session::put('exception',null);    
+            }
+            $logout_msg=Session::get('logout_msg');
+            if(isset($logout_msg)){
+                echo $logout_msg;
+                Session::put('logout_msg','');
+            }
+
+            ?> 
+        </h3>
+        
         <div class="metro single-size red">
             <div class="locked">
                 <i class="icon-lock"></i>
                 <span>Login</span>
             </div>
         </div>
-        <h3>
-            <?php
 
-                $exceptiop=Session::get('exception');
-                if(isSet($exceptiop)){
-                    echo $exceptiop;
-                    Session::put('exception',null);    
-            }
-
-            ?> 
-        </h3>
         <div class="metro double-size green">
             
-                <div class="input-append lock-input">
-                    <input type="text" class="" placeholder="Email" name="admin_email">
-                </div>
+            <div class="input-append lock-input">
+                <input type="text" class="" placeholder="Email" name="admin_email">
+            </div>
             
         </div>
         <div class="metro double-size yellow">
-            <
-                <div class="input-append lock-input">
-                    <input type="password" class="" placeholder="Password" name="password">
-                </div>
+            
+            <div class="input-append lock-input">
+                <input type="password" class="" placeholder="Password" name="password">
+            </div>
             
         </div>
         <div class="metro single-size terques login">
             
-                <button type="submit" class="btn login-btn">
-                    Login
-                    <i class=" icon-long-arrow-right"></i>
-                </button>
+            <button type="submit" class="btn login-btn">
+                Login
+                <i class=" icon-long-arrow-right"></i>
+            </button>
             
         </div>
 

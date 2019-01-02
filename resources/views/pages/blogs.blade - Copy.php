@@ -3,23 +3,21 @@
 
 <div id="templatemo_main">
 	<div id="content">
-    
-        @foreach($all_blog_info as $vblog)
         <div class="post last_box">
-            
+               @foreach($all_blog_info as $vblog)
             <h2>{{$vblog->blog_name}}</h2>
             
-            <img src="{{URL::asset($vblog->image)}}" alt="Image 03" height="200px" width="600px" />       
-           <p>{{$vblog->long_description}}</p>
+       <!--     <img src="{{URL::asset($vblog->image)}}" alt="Image 03" height="200px" width="200px" />   -->    
+            <p>{{$vblog->long_description}}</p>
             <div class="meta">
                 <span class="admin">Smith</span><span class="date">March 13, 2048</span><span class="tag"><a href="#">Templates</a>, <a href="#">Web Designs</a></span><span class="comment"><a href="#">164 comments</a></span>
                 <span class="more_but"><a href="blog_post.html" class="more">More</a></span>
+
                 <div class="cleaner"></div>
             </div> 
             <div class="cleaner"></div>
         </div>
-         @endforeach
-        
+        @endforeach
          <div class="pagging">
                 <ul>
                     <li><a href="http://www.templatemo.com" target="_parent">Previous</a></li>
